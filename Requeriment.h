@@ -7,6 +7,6 @@ template <typename ...COMPONENTS>
 class Requeriment : public System
 {
 	public:
-		Requeriment() : System({ typeid (const COMPONENTS)... }) {}
+		Requeriment() : System({ typeid (const COMPONENTS)... }) { }
 };
 #endif

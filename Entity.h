@@ -1,8 +1,10 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include <cstdint>
+
 struct Entity
 {
-	int const id;
+	uint32_t id;
 };
 #endif

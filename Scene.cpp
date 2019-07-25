@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-Scene::Scene() { }
+Scene::Scene() : entity{ 0 } { }
 
 Scene::~Scene()
 {
@@ -9,7 +9,7 @@ Scene::~Scene()
 
 GameObject* Scene::createGameObject()
 {
-	GameObject* obj = new GameObject{};
+	GameObject* obj = new GameObject{ next() };
 	pool->add(obj);
 	return obj;
 }
@@ -23,4 +23,9 @@ void Scene::destroyGameObject(GameObject* obj)
 Pool* Scene::getPool()
 {
 	return pool;
+}
+
+uint32_t Scene::next()
+{
+	return entity++;
 }

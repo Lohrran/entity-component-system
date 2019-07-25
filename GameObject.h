@@ -11,8 +11,8 @@
 class GameObject
 {
 	public:
-		GameObject() : entity{}, components{} {}
-		~GameObject() {}
+		GameObject(uint32_t id);
+		~GameObject();
 
 		template<typename COMPONENT, typename... Args>
 		void addComponent(Args&&... args);
@@ -32,6 +32,13 @@ class GameObject
 };
 
 //Implementation
+inline GameObject::GameObject(uint32_t id) : entity{ new Entity { } }, components{ }
+{
+	entity->id = id;
+}
+
+inline GameObject::~GameObject() { }
+
 template<typename COMPONENT, typename... Args>
 inline void GameObject::addComponent(Args&&... args)
 {

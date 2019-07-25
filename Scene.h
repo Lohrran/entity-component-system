@@ -17,5 +17,9 @@ class Scene
 
 	protected:
 		Pool* pool = new Pool{ };
+
+	private:
+		uint32_t entity;
+		uint32_t next();
 };
 #endif
