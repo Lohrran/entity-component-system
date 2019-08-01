@@ -94,7 +94,9 @@ int main(int argc, char *argv[])
 				quit = true;
 			}
 		}
-
+		
+		resources->registering(); //Register any new Game Object that is create while is in the Game Loop
+		
 		resources->update<SpriteSystem>();
 		resources->update<MovementSystem>();
 		resources->update<ScreenSystem>();
@@ -131,7 +133,7 @@ int main(int argc, char *argv[])
 }
 ```
 
-###### Create Scene and Resource
+###### Create Game Object
 
 ```c++
 
