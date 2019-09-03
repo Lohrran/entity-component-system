@@ -1,3 +1,5 @@
+/*Below a little example of how the framework works*/
+
 #include <iostream>
 #include <string>
 
