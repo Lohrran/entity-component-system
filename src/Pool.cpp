@@ -1,5 +1,15 @@
 #include "Pool.h"
 
+Pool::~Pool()
+{
+	while (!items.empty())
+	{
+		GameObject* obj = items.back();
+		items.erase(std::remove(items.begin(), items.end(), obj), items.end());
+		delete obj;
+	}
+}
+
 void Pool::add(GameObject* obj)
 {
 	if (std::find(items.begin(), items.end(), obj) == items.end())
@@ -15,11 +25,6 @@ void Pool::remove(GameObject* obj)
 		items.erase(std::remove(items.begin(), items.end(), obj), items.end());
 		delete obj;
 	}
-}
-
-void Pool::clear()
-{
-	items.clear();
 }
 
 std::vector<GameObject*> Pool::getItems()

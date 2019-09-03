@@ -10,13 +10,18 @@ class Scene
 		Scene();
 		~Scene();
 
+		Scene(const Scene&) = default;
+		Scene& operator = (const Scene&) = delete;
+		Scene& operator = (Scene&&) = delete;
+
+
 		GameObject* createGameObject();
 		void destroyGameObject(GameObject* obj);
 
-		Pool* getPool();
+		std::vector<GameObject*> gameObjects();
 
 	protected:
-		Pool* pool = new Pool{ };
+		Pool* pool = new Pool { };
 
 	private:
 		uint32_t entity;
