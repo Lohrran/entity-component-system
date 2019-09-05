@@ -9,7 +9,7 @@ After I read the book **[Game Programming Patterns by Robert Nystrom](https://ga
 The framework was based on different articles (references below) from cross internet and the book Game Programming Patterns, it's simple to understand and easy to use.
 For the communication between the *systems* was implement **[Publisher / Subscribe Pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern)**.
 
-So the framework have some issues handling memory allocation, and on my concept I thought that having an Object Pooling for create and delete Game Object should be a *system* instead, although implement a Object Pooling in the current framework should be easy.
+> So the framework have some issues handling memory allocation although I think i manage well for my first attempt using C++.
 
 ## What it Looks Like?
 The below implementation was made using the SDL2 library:
@@ -49,21 +49,21 @@ int main(int argc, char *argv[])
 
 	/* --- SCENE ---*/
 	
-	Scene* scene = new Scene{ };
-	Resources* resources = new Resources{ scene };
+	Scene scene;
+	Resources resources{ &scene };
 
 	//Game Screen
-	GameObject* screen = scene->createGameObject();
-	screen->addComponent<ScreenComponent>("Game", SCREEN_WIDTH, SCREEN_HEIGHT);
+	GameObject* screen = scene.createGameObject();
+	screen.addComponent<ScreenComponent>("Game", SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	/* --- GAMEOBJECTS ---*/
 	
-	GameObject* player = scene->createGameObject();
+	GameObject* player = scene.createGameObject();
 	player->addComponent<SpriteComponent>("C:\\Users\\claud\\Desktop\\player_34x34.bmp", 34, 34);
 	player->addComponent<PositionComponent>(50, 50);
 	player->addComponent<TagComponent>("Player");
 
-	GameObject* enemy = scene->createGameObject();
+	GameObject* enemy = scene.createGameObject();
 	enemy->addComponent<SpriteComponent>("C:\\Users\\claud\\Desktop\\enemy_34x34.bmp", 34, 34);
 	enemy->addComponent<PositionComponent>(300, 100);
 	enemy->addComponent<TagComponent>("Enemy");
@@ -71,17 +71,17 @@ int main(int argc, char *argv[])
 
 	/* --- SYSTEMS --- */
 
-	resources->add<ScreenSystem>();
-	resources->add<SpriteSystem>();
-	resources->add<MovementSystem>();
+	resources.add<ScreenSystem>();
+	resources.add<SpriteSystem>();
+	resources.add<MovementSystem>();
 
 
 	/* --- INITIALIZING THE GAME --- */
 
 	//Start
-	resources->init<ScreenSystem>();
-	resources->init<SpriteSystem>();
-	resources->init<MovementSystem>();
+	resources.init<ScreenSystem>();
+	resources.init<SpriteSystem>();
+	resources.init<MovementSystem>();
 
 	//Update
 	while (!quit)
@@ -94,20 +94,18 @@ int main(int argc, char *argv[])
 				quit = true;
 			}
 		}
-		
-		resources->registering(); //Register any new Game Object that is create while is in the Game Loop
-		
-		resources->update<SpriteSystem>();
-		resources->update<MovementSystem>();
-		resources->update<ScreenSystem>();
+				
+		resources.update<SpriteSystem>();
+		resources.update<MovementSystem>();
+		resources.update<ScreenSystem>();
 
 		SDL_Delay(1000 / FRAMES_PER_SECOND);
 	}
 
 	//Clean
-	resources->free<SpriteSystem>();
-	resources->free<MovementSystem>();
-	resources->free<ScreenSystem>();
+	resources.free<SpriteSystem>();
+	resources.free<MovementSystem>();
+	resources.free<ScreenSystem>();
 
 	std::cout << "\n\n\n";
 	system("pause");
@@ -126,21 +124,17 @@ Import the files for your project.
 
 ```c++
 
-int main(int argc, char *argv[])
-{
-	Scene* scene = new Scene{ };
-	Resources* resources = new Resources{ scene };
-}
+Scene scene;
+Resources resources { &scene };
+
 ```
 
 ###### Create Game Object
 
 ```c++
 
-int main(int argc, char *argv[])
-{
-	GameObject* player = scene->createGameObject();
-}
+GameObject* player = scene.createGameObject();
+
 ```
 
 
@@ -193,8 +187,6 @@ struct StateEvent : public Event
 class MovementSystem : public Requeriment <PositionComponent, VelocityComponent, DirectionComponent>
 {
 	public:
-		MovementSystem();
-
 		void init(GameObject* obj) override;
 		void update(GameObject* obj)override;
 		void free(GameObject* obj) override;
@@ -256,13 +248,14 @@ enabled:
 inline void Resources::update()
 {
 	std::type_index systemType = std::type_index(typeid(SYSTEM));
+	
 	if (systems[systemType] != nullptr)
 	{
-		for (auto obj : registered[systemType])
+		for (auto obj : scene->gameObjects())
 		{
-			if (componentEnabled(systemType, obj))// Check if all component are enabled to current System be able to work
+			if (requeriments(systemType, obj) && isComponentsEnabled(systemType, obj))
 			{
-				systems[systemType]->update(obj);//pass later deltatime
+				systems[systemType]->update(obj);
 			}
 		}
 	}
@@ -272,7 +265,7 @@ For disabled or enabled a GameObject it's simple:
 
 ```c++
 
-	player->getComponent<PositionComponent>()->enabled = false;
+player->getComponent<PositionComponent>()->enabled = false;
 
 ```
 ## References:
