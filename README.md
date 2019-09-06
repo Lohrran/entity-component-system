@@ -9,7 +9,7 @@ After I read the book **[Game Programming Patterns by Robert Nystrom](https://ga
 The framework was based on different articles (references below) from cross internet and the book Game Programming Patterns, it's simple to understand and easy to use.
 For the communication between the *systems* was implement **[Publisher / Subscribe Pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern)**.
 
-> So the framework have some issues handling memory allocation although I think i manage well for my first attempt using C++.
+> So the framework have some issues handling memory allocation although I maybe had managed it well for my first attempt using C++ 😎/😭.
 
 ## What it Looks Like?
 The below implementation was made using the SDL2 library:
