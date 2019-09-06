@@ -61,12 +61,12 @@ int main(int argc, char *argv[])
 	/* --- GAMEOBJECTS ---*/
 	
 	GameObject* player = scene.createGameObject();
-	player->addComponent<SpriteComponent>("C:\\Users\\claud\\Desktop\\player_34x34.bmp", 34, 34);
+	player->addComponent<SpriteComponent>("C:\\Users\\user\\Desktop\\player_34x34.bmp", 34, 34);
 	player->addComponent<PositionComponent>(50, 50);
 	player->addComponent<TagComponent>("Player");
 
 	GameObject* enemy = scene.createGameObject();
-	enemy->addComponent<SpriteComponent>("C:\\Users\\claud\\Desktop\\enemy_34x34.bmp", 34, 34);
+	enemy->addComponent<SpriteComponent>("C:\\Users\\user\\Desktop\\enemy_34x34.bmp", 34, 34);
 	enemy->addComponent<PositionComponent>(300, 100);
 	enemy->addComponent<TagComponent>("Enemy");
 
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 	resources.add<MovementSystem>();
 
 
-	/* --- INITIALIZING THE GAME --- */
+	/* --- RUNNING THE GAME --- */
 
 	//Start
 	resources.init<ScreenSystem>();
