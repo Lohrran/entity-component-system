@@ -5,11 +5,13 @@
 ## Why?
 After I read the book **[Game Programming Patterns by Robert Nystrom](https://gameprogrammingpatterns.com)**, I could not stop think in ways to apply the different designs on the book, however of all them ECS call more my atention. So here is my attempt of implement it and learn more C++
 
+
 ## Introduction
 The framework was based on different articles (references below) from cross internet and the book Game Programming Patterns, it's simple to understand and easy to use.
 For the communication between the *systems* was implement **[Publisher / Subscribe Pattern](https://en.wikipedia.org/wiki/Publish–subscribe_pattern)**.
 
 > So the framework have some issues handling memory allocation although I maybe had managed it well for my first attempt using C++ 😎/😭.
+
 
 ## What it Looks Like?
 The below implementation was made using the SDL2 library, you can also check it in the **[Tiny-Engine-2D](https://github.com/Lohrran/Tiny-Engine-2D/blob/master/README.md)**:
