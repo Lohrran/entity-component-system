@@ -273,7 +273,8 @@ player->getComponent<PositionComponent>()->enabled = false;
 ## References:
 Some references used while developing the framework
 
-- [Game Programming Patterns by Robert Nystrom] (https://gameprogrammingpatterns.com)
-- [Aframe Entity-Component-System] (https://aframe.io/docs/0.9.0/introduction/entity-component-system.html)
-- [Ts Projects Entity-Component-System] (https://tsprojectsblog.wordpress.com/portfolio/entity-component-system/)
-- [Understanding Component-Entity-Systems] (https://www.gamedev.net/articles/programming/general-and-gameplay-programming/understanding-component-entity-systems-r3013/)
+- [Game Programming Patterns by Robert Nystrom](https://gameprogrammingpatterns.com)
+- [Aframe Entity-Component-System](https://aframe.io/docs/0.9.0/introduction/entity-component-system.html)
+- [Ts Projects Entity-Component-System](https://tsprojectsblog.wordpress.com/portfolio/entity-component-system/)
+- [Understanding Component-Entity-Systems](https://www.gamedev.net/articles/programming/general-and-gameplay-programming/understanding-component-entity-systems-r3013/)
+- [Effective Event Handling in C++ by Szymon Gatner](https://www.gamedev.net/articles/programming/general-and-gameplay-programming/effective-event-handling-in-c-r2459)
