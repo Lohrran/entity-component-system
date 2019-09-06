@@ -12,7 +12,7 @@ For the communication between the *systems* was implement **[Publisher / Subscri
 > So the framework have some issues handling memory allocation although I maybe had managed it well for my first attempt using C++ 😎/😭.
 
 ## What it Looks Like?
-The below implementation was made using the SDL2 library:
+The below implementation was made using the SDL2 library, you can also check it in the **[Tiny-Engine-2D](https://github.com/Lohrran/Tiny-Engine-2D/blob/master/README.md)**:
 
 ```c++
 
