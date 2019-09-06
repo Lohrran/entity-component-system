@@ -1,4 +1,4 @@
-# Entity-Component-System
+# Entity Component System
 > A tiny ECS C++ framework
 
 
