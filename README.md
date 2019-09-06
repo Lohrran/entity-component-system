@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
 Import the files for your project.
 
 
-###### Create Scene and Resource
+#### Create Scene and Resource
 
 ```c++
 
@@ -131,7 +131,7 @@ Resources resources { &scene };
 
 ```
 
-###### Create Game Object
+#### Create Game Object
 
 ```c++
 
@@ -140,7 +140,7 @@ GameObject* player = scene.createGameObject();
 ```
 
 
-###### Create Component
+#### Create Component
 
 ```c++
 #include "Component.h"
@@ -154,7 +154,7 @@ struct PositionComponent : public Component
 ```
 
 
-###### Create Event
+#### Create Event
 
 ```c++
 //Entity Component System
@@ -170,9 +170,9 @@ struct StateEvent : public Event
 };
 ```
 
-###### Create System
+#### Create System
 
-.h File:
+##### .h File:
 
 ```c++
 //Entity Component System
@@ -195,7 +195,7 @@ class MovementSystem : public Requeriment <PositionComponent, VelocityComponent,
 };
 ```
 
-.cpp File:
+##### .cpp File:
 ```C++
 #include "MovementSystem.h"
 
