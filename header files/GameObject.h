@@ -14,9 +14,9 @@ class GameObject
 		Entity* entity;
 		std::map <std::type_index, Component*> components;
 
-
 		GameObject(uint32_t id);
-
+		
+		GameObject(const GameObject&) = default;
 		GameObject& operator = (const GameObject& clone) = default;
 		GameObject& operator = (GameObject&&) = default;
 

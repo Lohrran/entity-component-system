@@ -13,7 +13,8 @@ class Resources
 {
 	public:
 		Resources(Scene* scene);
-
+		
+		Resources(const Resources&) = delete;
 		Resources& operator = (const Resources&) = delete;
 		Resources& operator = (Resources&&) = delete;
 

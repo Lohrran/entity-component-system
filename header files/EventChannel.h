@@ -10,6 +10,13 @@
 class EventChannel
 {
 	public:
+		EventChannel() = default;
+		EventChannel(const EventChannel&) = default;
+		EventChannel& operator = (const EventChannel&) = delete;
+		EventChannel& operator = (EventChannel&&) = delete;
+
+		~EventChannel();
+	
 		template <typename EventType>
 		void publish(EventType* evt);
 
